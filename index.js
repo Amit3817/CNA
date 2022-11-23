@@ -1,10 +1,13 @@
 const express=require("express");
 const mongoose=require("mongoose");
-const authroutes=require("./controller/authroutes");
+const authroutes=require("./controller/userauth");
+const user=require("./routes/auth/user");
 
 require('dotenv').config();
 
 const app=express();
+
+app.use(express.json());
 
 mongoose.connect(process.env.dburi).then(()=>{
     console.log("Connected");
@@ -13,4 +16,4 @@ mongoose.connect(process.env.dburi).then(()=>{
     console.log(err);
 });
 
-app.use(authroutes);
+app.use('/auth/user',user);

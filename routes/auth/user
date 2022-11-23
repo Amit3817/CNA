@@ -1,0 +1,9 @@
+const express=require("express");
+
+const userauth=require("../../controller/userauth");
+
+const router=express.Router();
+
+router.post('/signup',userauth.signup);
+
+module.exports=router;
